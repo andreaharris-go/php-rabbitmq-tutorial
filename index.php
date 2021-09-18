@@ -7,10 +7,11 @@ use Symfony\Component\Console\Input\InputDefinition;
 
 require __DIR__.'/vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 $application = new Application('Cloud Logging');
-
 $inputDefinition = new InputDefinition([]);
-
 $application->add(new Command('hello'))
     ->setDefinition($inputDefinition)
     ->setDescription('Hi how are you?')
@@ -22,6 +23,13 @@ $application->add(new Command('hello'))
     )
     ->setCode(function ($input, $output) {
         printf("%s\n", $input->getArgument('message'));
+    });
+
+$application->add(new Command('simple-exchange'))
+    ->setDefinition($inputDefinition)
+    ->setCode(function ($input, $output) {
+        printf("sending to rabbitMQ\n");
+        simpleExchange();
     });
 
 $application->run();
