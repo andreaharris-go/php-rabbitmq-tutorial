@@ -1,0 +1,21 @@
+{
+  "name": "andreaharris-go/php-rabbitmq-tutorial",
+  "type": "project",
+  "description": "AG Slash",
+  "keywords": [
+    "framework",
+    "laravel"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Duckdev84",
+      "homepage": "https://duckdev84.com"
+    }
+  ],
+  "require": {
+    "php" : "^7.4",
+    "ext-json": "*",
+    "php-amqplib/php-amqplib": "2.9.0"
+  }
+}
